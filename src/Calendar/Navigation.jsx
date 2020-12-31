@@ -125,13 +125,13 @@ export default function Navigation({
   function renderButton() {
     const labelClassName = `${className}__label`;
     return (
-      <button
+      <div
         aria-label={navigationAriaLabel}
         className={labelClassName}
         disabled={!drillUpAvailable}
         onClick={drillUp}
         style={{ flexGrow: 1 }}
-        type="button"
+        type="div"
       >
         <span className={`${labelClassName}__labelText ${labelClassName}__labelText--from`}>
           {renderLabel(activeStartDate)}
@@ -148,7 +148,7 @@ export default function Navigation({
             </span>
           </>
         )}
-      </button>
+      </div>
     );
   }
 
@@ -158,49 +158,49 @@ export default function Navigation({
       style={{ display: 'flex' }}
     >
       {prev2Label !== null && shouldShowPrevNext2Buttons && (
-        <button
+        <div
           aria-label={prev2AriaLabel}
           className={`${className}__arrow ${className}__prev2-button`}
           disabled={prev2ButtonDisabled}
           onClick={onClickPrevious2}
-          type="button"
+          type="div"
         >
           {prev2Label}
-        </button>
+        </div>
       )}
       {prevLabel !== null && (
-        <button
+        <div
           aria-label={prevAriaLabel}
           className={`${className}__arrow ${className}__prev-button`}
           disabled={prevButtonDisabled}
           onClick={onClickPrevious}
-          type="button"
+          type="div"
         >
           {prevLabel}
-        </button>
+        </div>
       )}
       {renderButton()}
       {nextLabel !== null && (
-        <button
+        <div
           aria-label={nextAriaLabel}
           className={`${className}__arrow ${className}__next-button`}
           disabled={nextButtonDisabled}
           onClick={onClickNext}
-          type="button"
+          type="div"
         >
           {nextLabel}
-        </button>
+        </div>
       )}
       {next2Label !== null && shouldShowPrevNext2Buttons && (
-        <button
+        <div
           aria-label={next2AriaLabel}
           className={`${className}__arrow ${className}__next2-button`}
           disabled={next2ButtonDisabled}
           onClick={onClickNext2}
-          type="button"
+          type="div"
         >
           {next2Label}
-        </button>
+        </div>
       )}
     </div>
   );
