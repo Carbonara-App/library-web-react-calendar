@@ -54,7 +54,7 @@ export default class Tile extends Component {
     const { tileClassName, tileContent } = this.state;
 
     return (
-      <button
+      <div
         className={mergeClassNames(classes, tileClassName)}
         disabled={
           (minDate && minDateTransform(minDate) > date)
@@ -65,7 +65,7 @@ export default class Tile extends Component {
         onFocus={onMouseOver && (() => onMouseOver(date))}
         onMouseOver={onMouseOver && (() => onMouseOver(date))}
         style={style}
-        type="button"
+        type="div"
       >
         {formatAbbr
           ? (
@@ -75,7 +75,7 @@ export default class Tile extends Component {
           )
           : children}
         {tileContent}
-      </button>
+      </div>
     );
   }
 }
