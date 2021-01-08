@@ -186,7 +186,7 @@ export default function Navigation({
       {nextLabel !== null && (
         <div
           aria-label={nextAriaLabel}
-          className={`${className}__arrow ${className}__next-button`}
+          className={`${className}__arrow ${className}__next-button` + (monthNavigationCount == 0 ? " sameMonth" : "")}
           disabled={nextButtonDisabled}
           onClick={onClickNext}
           type="div"
