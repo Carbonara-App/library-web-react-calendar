@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, React } from 'react';
 import PropTypes from 'prop-types';
 import { getUserLocale } from 'get-user-locale';
 
@@ -53,6 +53,7 @@ export default function Navigation({
   );
   const nextActiveStartDate = getBeginNext(view, activeStartDate);
   const nextActiveStartDate2 = shouldShowPrevNext2Buttons && getBeginNext2(view, activeStartDate);
+  const [monthNavigationCount, setMonthNavigationCount] = useState(0);
 
   const prevButtonDisabled = (() => {
     if (previousActiveStartDate.getFullYear() < 1000) {
@@ -80,6 +81,7 @@ export default function Navigation({
 
   function onClickPrevious() {
     setActiveStartDate(previousActiveStartDate);
+    setMonthNavigationCount(monthNavigationCount - 1);
   }
 
   function onClickPrevious2() {
@@ -88,6 +90,7 @@ export default function Navigation({
 
   function onClickNext() {
     setActiveStartDate(nextActiveStartDate);
+    setMonthNavigationCount(monthNavigationCount + 1);
   }
 
   function onClickNext2() {
@@ -171,7 +174,7 @@ export default function Navigation({
       {prevLabel !== null && (
         <div
           aria-label={prevAriaLabel}
-          className={`${className}__arrow ${className}__prev-button`}
+          className={`${className}__arrow ${className}__prev-button `+ (monthNavigationCount == 0 ? " sameMonth" : "")}
           disabled={prevButtonDisabled}
           onClick={onClickPrevious}
           type="div"
