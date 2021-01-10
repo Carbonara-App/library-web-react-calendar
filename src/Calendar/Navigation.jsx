@@ -1,4 +1,4 @@
-import { useState, React } from 'react';
+import { React } from 'react';
 import PropTypes from 'prop-types';
 import { getUserLocale } from 'get-user-locale';
 
@@ -42,6 +42,8 @@ export default function Navigation({
   showDoubleView,
   view,
   views,
+  monthNavigationCount,
+  onMonthNavigationCountChanged,
 }) {
   const drillUpAvailable = views.indexOf(view) > 0;
   const shouldShowPrevNext2Buttons = view !== 'century';
@@ -53,7 +55,6 @@ export default function Navigation({
   );
   const nextActiveStartDate = getBeginNext(view, activeStartDate);
   const nextActiveStartDate2 = shouldShowPrevNext2Buttons && getBeginNext2(view, activeStartDate);
-  const [monthNavigationCount, setMonthNavigationCount] = useState(0);
 
   const prevButtonDisabled = (() => {
     if (previousActiveStartDate.getFullYear() < 1000) {
@@ -81,7 +82,7 @@ export default function Navigation({
 
   function onClickPrevious() {
     setActiveStartDate(previousActiveStartDate);
-    setMonthNavigationCount(monthNavigationCount - 1);
+    onMonthNavigationCountChanged(monthNavigationCount - 1);
   }
 
   function onClickPrevious2() {
@@ -90,7 +91,7 @@ export default function Navigation({
 
   function onClickNext() {
     setActiveStartDate(nextActiveStartDate);
-    setMonthNavigationCount(monthNavigationCount + 1);
+    onMonthNavigationCountChanged(monthNavigationCount + 1);
   }
 
   function onClickNext2() {
@@ -174,7 +175,7 @@ export default function Navigation({
       {prevLabel !== null && (
         <div
           aria-label={prevAriaLabel}
-          className={`${className}__arrow ${className}__prev-button `+ (monthNavigationCount == 0 ? " sameMonth" : "")}
+          className={`${className}__arrow ${className}__prev-button ${monthNavigationCount == 0 ? ' sameMonth' : ''}`}
           disabled={prevButtonDisabled}
           onClick={onClickPrevious}
           type="div"
@@ -186,7 +187,7 @@ export default function Navigation({
       {nextLabel !== null && (
         <div
           aria-label={nextAriaLabel}
-          className={`${className}__arrow ${className}__next-button` + (monthNavigationCount == 0 ? " sameMonth" : "")}
+          className={`${className}__arrow ${className}__next-button${monthNavigationCount == 0 ? ' sameMonth' : ''}`}
           disabled={nextButtonDisabled}
           onClick={onClickNext}
           type="div"
@@ -231,4 +232,7 @@ Navigation.propTypes = {
   showDoubleView: PropTypes.bool,
   view: isView.isRequired,
   views: isViews.isRequired,
+  monthNavigationCount: PropTypes.number,
+  onMonthNavigationCountChanged: PropTypes.func,
 };
+
