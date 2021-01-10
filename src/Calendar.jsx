@@ -597,7 +597,7 @@ export default class Calendar extends Component {
         view={view}
         views={views}
         monthNavigationCount={monthNavigationCount}
-        onMonthNavigationCountChanged={this.onMonthNavigationCountChanged}
+        onMonthNavigationCountChanged={this.onMonthNavigationCountChanged.bind(this)}
       />
     );
   }
