@@ -176,8 +176,8 @@ export default function Navigation({
         <div
           aria-label={prevAriaLabel}
           className={`${className}__arrow ${className}__prev-button ${monthNavigationCount == 0 ? ' sameMonth' : ''}`}
-          disabled={prevButtonDisabled}
-          onClick={onClickPrevious}
+          disabled={monthNavigationCount == 0 ? true : prevButtonDisabled}
+          onClick={monthNavigationCount == 0 ? () => {} : onClickPrevious}
           type="div"
         >
           {prevLabel}
