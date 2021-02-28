@@ -81,7 +81,9 @@ export default function Navigation({
   );
 
   function onClickPrevious() {
-    setActiveStartDate(previousActiveStartDate);
+    if (!prevButtonDisabled){
+      setActiveStartDate(previousActiveStartDate);
+    }
   }
 
   function onClickPrevious2() {
