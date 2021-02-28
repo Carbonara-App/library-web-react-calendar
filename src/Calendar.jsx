@@ -162,13 +162,8 @@ export default class Calendar extends Component {
     activeStartDate: this.props.defaultActiveStartDate,
     value: this.props.defaultValue,
     view: this.props.defaultView,
-    monthNavigationCount: 0
     /* eslint-enable react/destructuring-assignment */
   };
-
-  onMonthNavigationCountChanged(val) {
-    this.setState({monthNavigationCount: val});
-  }
 
   get activeStartDate() {
     const { activeStartDate: activeStartDateProps } = this.props;
@@ -571,8 +566,6 @@ export default class Calendar extends Component {
       showDoubleView,
     } = this.props;
 
-    const { monthNavigationCount } = this.state;
-
     return (
       <Navigation
         activeStartDate={activeStartDate}
@@ -596,8 +589,6 @@ export default class Calendar extends Component {
         showDoubleView={showDoubleView}
         view={view}
         views={views}
-        monthNavigationCount={monthNavigationCount}
-        onMonthNavigationCountChanged={this.onMonthNavigationCountChanged.bind(this)}
       />
     );
   }

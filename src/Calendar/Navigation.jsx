@@ -42,8 +42,6 @@ export default function Navigation({
   showDoubleView,
   view,
   views,
-  monthNavigationCount,
-  onMonthNavigationCountChanged,
 }) {
   const drillUpAvailable = views.indexOf(view) > 0;
   const shouldShowPrevNext2Buttons = view !== 'century';
@@ -82,7 +80,6 @@ export default function Navigation({
 
   function onClickPrevious() {
     setActiveStartDate(previousActiveStartDate);
-    onMonthNavigationCountChanged(monthNavigationCount - 1);
   }
 
   function onClickPrevious2() {
@@ -91,7 +88,6 @@ export default function Navigation({
 
   function onClickNext() {
     setActiveStartDate(nextActiveStartDate);
-    onMonthNavigationCountChanged(monthNavigationCount + 1);
   }
 
   function onClickNext2() {
@@ -175,9 +171,9 @@ export default function Navigation({
       {prevLabel !== null && (
         <div
           aria-label={prevAriaLabel}
-          className={`${className}__arrow ${className}__prev-button ${monthNavigationCount == 0 ? ' sameMonth' : ''}`}
-          disabled={monthNavigationCount == 0 ? true : prevButtonDisabled}
-          onClick={monthNavigationCount == 0 ? () => {} : onClickPrevious}
+          className={`${className}__arrow ${className}__prev-button`}
+          disabled={prevButtonDisabled}
+          onClick={onClickPrevious}
           type="div"
         >
           {prevLabel}
@@ -187,7 +183,7 @@ export default function Navigation({
       {nextLabel !== null && (
         <div
           aria-label={nextAriaLabel}
-          className={`${className}__arrow ${className}__next-button${monthNavigationCount == 0 ? ' sameMonth' : ''}`}
+          className={`${className}__arrow ${className}__next-button`}
           disabled={nextButtonDisabled}
           onClick={onClickNext}
           type="div"
@@ -232,7 +228,5 @@ Navigation.propTypes = {
   showDoubleView: PropTypes.bool,
   view: isView.isRequired,
   views: isViews.isRequired,
-  monthNavigationCount: PropTypes.number,
-  onMonthNavigationCountChanged: PropTypes.func,
 };
 
