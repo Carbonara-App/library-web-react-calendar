@@ -59,8 +59,6 @@ export default function Navigation({
       return true;
     }
     const previousActiveEndDate = getEndPrevious(view, activeStartDate);
-    console.log(previousActiveEndDate + "   min: "+minDate);
-    console.log( minDate && minDate >= previousActiveEndDate);
     return minDate && minDate >= previousActiveEndDate;
   })();
 
