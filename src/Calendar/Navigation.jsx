@@ -173,7 +173,7 @@ export default function Navigation({
         <div
           aria-label={prevAriaLabel}
           className={`${className}__arrow ${className}__prev-button`}
-          disabled={prevButtonDisabled}
+          disabled={prevButtonDisabled()}
           onClick={onClickPrevious}
           type="div"
         >
